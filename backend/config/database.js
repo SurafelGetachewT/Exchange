@@ -2,6 +2,8 @@ const { Pool } = require('pg');
 require('dotenv').config();
 
 const hasDatabaseUrl = !!process.env.DATABASE_URL;
+const connectionTimeoutMs = Number.parseInt(process.env.DB_CONNECTION_TIMEOUT_MS, 10);
+const resolvedConnectionTimeoutMs = Number.isFinite(connectionTimeoutMs) ? connectionTimeoutMs : 20000;
 
 const pool = new Pool({
   ...(hasDatabaseUrl
@@ -18,7 +20,7 @@ const pool = new Pool({
       }),
   max: 20, // Maximum number of clients in the pool
   idleTimeoutMillis: 30000, // How long a client is allowed to remain idle before being closed
-  connectionTimeoutMillis: 2000, // How long to wait when connecting a new client
+  connectionTimeoutMillis: resolvedConnectionTimeoutMs, // How long to wait when connecting a new client
 });
 
 // Test database connection
