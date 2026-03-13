@@ -45,9 +45,17 @@ router.post('/register', validateRegistration, async (req, res) => {
       { expiresIn: process.env.JWT_EXPIRE || '24h' }
     );
 
+    const refreshSecret = process.env.JWT_REFRESH_SECRET || process.env.JWT_SECRET;
+    if (!refreshSecret) {
+      return res.status(500).json({
+        error: 'Registration failed',
+        details: 'Server misconfiguration: JWT_REFRESH_SECRET (or JWT_SECRET fallback) is missing'
+      });
+    }
+
     const refreshToken = jwt.sign(
       { userId: user.id },
-      process.env.JWT_REFRESH_SECRET,
+      refreshSecret,
       { expiresIn: process.env.JWT_REFRESH_EXPIRE || '7d' }
     );
 
@@ -77,7 +85,13 @@ router.post('/register', validateRegistration, async (req, res) => {
     });
   } catch (error) {
     console.error('Registration error:', error);
-    res.status(500).json({ error: 'Registration failed' });
+    if (error && error.code === '23505') {
+      return res.status(409).json({ error: 'User with this email or username already exists' });
+    }
+    res.status(500).json({
+      error: 'Registration failed',
+      details: error && error.message ? error.message : undefined
+    });
   }
 });
 
@@ -121,9 +135,17 @@ router.post('/login', validateLogin, async (req, res) => {
       { expiresIn: process.env.JWT_EXPIRE || '24h' }
     );
 
+    const refreshSecret = process.env.JWT_REFRESH_SECRET || process.env.JWT_SECRET;
+    if (!refreshSecret) {
+      return res.status(500).json({
+        error: 'Login failed',
+        details: 'Server misconfiguration: JWT_REFRESH_SECRET (or JWT_SECRET fallback) is missing'
+      });
+    }
+
     const refreshToken = jwt.sign(
       { userId: user.id },
-      process.env.JWT_REFRESH_SECRET,
+      refreshSecret,
       { expiresIn: process.env.JWT_REFRESH_EXPIRE || '7d' }
     );
 
@@ -142,7 +164,10 @@ router.post('/login', validateLogin, async (req, res) => {
     });
   } catch (error) {
     console.error('Login error:', error);
-    res.status(500).json({ error: 'Login failed' });
+    res.status(500).json({
+      error: 'Login failed',
+      details: error && error.message ? error.message : undefined
+    });
   }
 });
 
@@ -155,7 +180,15 @@ router.post('/refresh', async (req, res) => {
       return res.status(401).json({ error: 'Refresh token required' });
     }
 
-    const decoded = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET);
+    const refreshSecret = process.env.JWT_REFRESH_SECRET || process.env.JWT_SECRET;
+    if (!refreshSecret) {
+      return res.status(500).json({
+        error: 'Token refresh failed',
+        details: 'Server misconfiguration: JWT_REFRESH_SECRET (or JWT_SECRET fallback) is missing'
+      });
+    }
+
+    const decoded = jwt.verify(refreshToken, refreshSecret);
     
     // Get user from database
     const userResult = await query(
@@ -184,7 +217,10 @@ router.post('/refresh', async (req, res) => {
       return res.status(401).json({ error: 'Invalid refresh token' });
     }
     console.error('Token refresh error:', error);
-    res.status(500).json({ error: 'Token refresh failed' });
+    res.status(500).json({
+      error: 'Token refresh failed',
+      details: error && error.message ? error.message : undefined
+    });
   }
 });
 
