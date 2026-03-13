@@ -16,19 +16,39 @@ const PORT = process.env.PORT || 3000;
 app.use(helmet());
 
 // CORS configuration
-const frontendUrls = (process.env.FRONTEND_URLS || process.env.FRONTEND_URL || 'http://localhost:5500')
+const frontendUrlsRaw = (process.env.FRONTEND_URLS || process.env.FRONTEND_URL || 'http://localhost:5500')
   .split(',')
   .map((s) => s.trim())
   .filter(Boolean);
 
-app.use(cors({
+const escapeRegex = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+const frontendOriginMatchers = frontendUrlsRaw.map((pattern) => {
+  if (pattern.includes('*')) {
+    const rx = `^${escapeRegex(pattern).replace(/\\\*/g, '.*')}$`;
+    return { pattern, test: (origin) => new RegExp(rx).test(origin) };
+  }
+  return { pattern, test: (origin) => origin === pattern };
+});
+
+const isAllowedOrigin = (origin) => {
+  if (!origin) return true;
+  return frontendOriginMatchers.some((m) => m.test(origin));
+};
+
+const corsOptions = {
   origin: (origin, cb) => {
-    if (!origin) return cb(null, true);
-    if (frontendUrls.includes(origin)) return cb(null, true);
-    return cb(new Error(`CORS blocked for origin: ${origin}`));
+    if (isAllowedOrigin(origin)) return cb(null, true);
+    return cb(null, false);
   },
-  credentials: true
-}));
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 // Rate limiting
 const limiter = rateLimit({
