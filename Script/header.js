@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     localStorage.removeItem('currentUser');
                     localStorage.setItem('loggedIn', 'false');
                 }
-                window.location.href = 'main.html';
+                window.location.href = 'index.html';
             });
         }
     };
