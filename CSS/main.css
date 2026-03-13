@@ -1,0 +1,478 @@
+/* CSS/main.css */
+body {
+    background-color: #0b0b10;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.cta-button {
+    background: linear-gradient(to right, #20b1dd, #0a85a8);
+    color: #fff;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background 0.3s;
+}
+
+.cta-button:hover {
+    background: linear-gradient(to right, #0a85a8, #20b1dd);
+}
+
+.features {
+    margin: 40px 0;
+}
+
+.feature-list {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.feature-item {
+    background-color: #1c1c24;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+}
+
+.feature-item img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.feature-item p {
+    line-height: 1.6;
+}
+
+.featured-cryptos {
+    margin-top: 40px;
+}
+
+.crypto-list {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.crypto-card {
+    background-color: #1c1c24;
+    padding: 20px;
+    border-radius: 8px;
+    width: 200px;
+    text-align: center;
+    transition: box-shadow 0.3s;
+}
+
+.crypto-card:hover {
+    box-shadow: 0 0 15px rgba(32, 177, 221, 0.5);
+}
+
+.how-to-start {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.section-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.trade-form {
+    background-color: #1c1c24;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    max-width: 400px;
+}
+
+.trade-form select,
+.trade-form input,
+.trade-form button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+.trade-form button {
+    background-color: #20b1dd;
+    color: #fff;
+    cursor: pointer;
+}
+
+.form-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #1c1c24;
+    border-radius: 8px;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: #0b0b10;
+    color: #fff;
+}
+
+.form-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #20b1dd;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-container a {
+    color: #20b1dd;
+    text-decoration: none;
+}
+
+.dashboard {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.crypto-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.crypto-table th,
+.crypto-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #333;
+}
+
+.crypto-table th {
+    background-color: #1c1c24;
+}
+
+#logout-btn {
+    background-color: #ff4d4d;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+        
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.main-column {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    background-color: transparent;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.middle-column {
+    flex-grow: 1;
+    background-color: transparent;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.right-column {
+    width: 250px;
+    background-color: #000000;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: left;
+    margin: 0 0 10px 0;
+    width: 100%;
+}
+
+.search-box {
+    width: 100%;
+    padding: 5px;
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.tabs {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.tab {
+    padding: 3px 6px;
+    cursor: pointer;
+    background-color: #2a2a2a;
+    border: 1px solid #333;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex: 1;
+    font-size: 12px;
+    box-sizing: border-box;
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
+}
+
+.tab.active {
+    background-color: #333;
+    border-color: #666;
+    text-decoration: underline;
+}
+
+.crypto-item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 6px 8px;
+    border-bottom: 1px solid #333;
+    cursor: pointer;
+    gap: 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    align-items: center;
+}
+
+.crypto-item:hover {
+    background-color: #1e1e1e;
+}
+
+.symbol {
+    font-weight: bold;
+    flex: 1;
+    text-align: left;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    font-size: 11px;
+}
+
+.star-icon {
+    cursor: pointer;
+    margin-bottom: 2px;
+    color: #ccc;
+    transition: color 0.3s;
+    font-size: 12px;
+}
+
+.star-icon.favorited {
+    color: #ffd700;
+}
+
+.subtext {
+    font-size: 10px;
+    color: #1e90ff;
+    /* Blue color for Perpetual/Option */
+    margin-top: 2px;
+}
+
+.price-container {
+    flex: 1;
+    text-align: right;
+    max-width: 50%;
+    font-size: 11px;
+}
+
+.price {
+    display: block;
+}
+
+.change-positive {
+    color: #00ff00;
+}
+
+.change-negative {
+    color: #ff0000;
+}
+
+.chart-section {
+    background-color: #0d1117;
+    border: 1px solid #444c56;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.time-intervals {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+    justify-content: center;
+}
+
+.time-btn {
+    background-color: #22272e;
+    color: #d1d4dc;
+    border: 1px solid #444c56;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.time-btn:hover {
+    background-color: #2d333b;
+}
+
+.time-btn.active {
+    background-color: #444c56;
+    color: #d1d4dc;
+}
+
+.chart-tabs {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+    justify-content: center;
+}
+
+.chart-tab {
+    background-color: #22272e;
+    color: #d1d4dc;
+    border: 1px solid #444c56;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.chart-tab:hover {
+    background-color: #2d333b;
+}
+
+.chart-tab.active {
+    background-color: #444c56;
+    color: #d1d4dc;
+}
+
+.chart-placeholder {
+    height: 500px;
+    background-color: #0d1117;
+    border: 1px solid #444c56;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #d1d4dc;
+    font-size: 14px;
+    position: relative;
+}
+
+#chart {
+    width: 100%;
+    height: 100%;
+}
+
+.message-area {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Order Book Styles */
+.order-book {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.order-book h2 {
+    font-size: 16px;
+    margin: 0 0 10px 0;
+    text-align: center;
+}
+
+.order-book-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.order-book-table th,
+.order-book-table td {
+    padding: 5px;
+    text-align: right;
+    font-size: 12px;
+}
+
+.order-book-table th {
+    background-color: #22272e;
+    border: 1px solid #444c56;
+}
+
+.order-book-table td {
+    border-bottom: 1px solid #333;
+}
+
+.buy-row {
+    background-color: rgba(0, 128, 0, 0.2);
+}
+
+.sell-row {
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
+.current-price-row {
+    background-color: #2a2a2a;
+    font-weight: bold;
+    text-align: center;
+}
+
+.order-book-table .price {
+    color: #d1d4dc;
+}
+
+.order-book-table .quantity {
+    color: #d1d4dc;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #000;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}

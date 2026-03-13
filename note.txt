@@ -1,0 +1,4 @@
+We have made the login state true (which is temporaray)
+  To work on the section where the user can see when login 
+  we made update in the header.js by Simulate logged-in state for 
+  dashboard.html

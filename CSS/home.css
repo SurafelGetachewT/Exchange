@@ -1,0 +1,225 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.home-page-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-page-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.home {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.home-title {
+  margin-left: 10%;
+  margin-top: 5%;
+  font-size: 40px;
+  width: 45%;
+}
+
+.theme-color {
+  color: rgb(75, 196, 226);
+  font-weight: bold;
+  font-style: normal;
+}
+
+.home-subtitle {
+  margin-left: 10%;
+  margin-top: 1%;
+  font-size: 20px;
+  width: 45%;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.home-input-group {
+  display: flex;
+  margin-top: 2%;
+}
+
+.home-input {
+  margin-left: 10%;
+  margin-top: 2%;
+  width: 17%;
+  height: 50px;
+  border-radius: 25px;
+  border: none;
+  padding-left: 20px;
+  font-size: 22px;
+  background-color: #121224;
+  color: white;
+}
+
+.home-button {
+  margin-left: 2%;
+  margin-top: 2%;
+  width: 10%;
+  height: 50px;
+  border-radius: 25px;
+  border: none;
+  font-size: 22px;
+  background-color: rgb(44, 177, 211);
+  color: white;
+  cursor: pointer;
+}
+
+.home-button:hover {
+  background-color: rgb(255, 255, 255);
+  transition: 0.5s;
+  color: black;
+}
+
+.app-store-container {
+  position: relative;
+  display: inline-block;
+  margin-left: 10px;
+  margin-top: 2%;
+}
+
+.app-store {
+  width: fit-content;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: transform 0.5s, background-color 0.5s;
+}
+
+.app-store:hover {
+  transform: scale(1.1);
+  background-color: aqua;
+}
+
+.qr-code {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  z-index: 2;
+}
+
+.qr-code img {
+  width: 100px;
+  height: 100px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.app-store-container:hover .qr-code {
+  display: block;
+}
+
+.home-data {
+    display: flex;
+    flex-direction: row;
+    margin-left: 10%;
+    width: 100%;
+    height: 100%;
+    margin-top: 5%;
+    gap: 5%;
+    margin-bottom: 16%;
+}
+
+.section-subtitle {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 2%;
+    color: gray;
+}
+
+.home-crypto-data {
+    width: 100%;
+    height: 40px;
+    background-color: rgba(8, 24, 44, 0.5);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+.ticker-wrapper {
+    display: flex;
+    white-space: nowrap;
+    margin-left: 20px;
+    margin-right: 20px;
+    animation: ticker 20s linear infinite;
+    justify-content: center;
+    width: 50%;
+}
+
+.ticker-item {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 30px;
+    color: white;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+
+.coin-name {
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.coin-price {
+    margin-right: 15px;
+}
+
+.coin-change-positive {
+    color: #00ff00;
+}
+
+.coin-change-negative {
+    color: #ff0000;
+}
+
+@keyframes ticker {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.home-crypto-data:hover .ticker-wrapper {
+    animation-play-state: running;
+}
+
+.card {
+  background-color: bisque;
+  width: 100%;
+  height: 200px;
+}
+
+.news {
+  background-color: blueviolet;
+  width: 100%;
+  height: 200px;
+}

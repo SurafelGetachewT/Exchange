@@ -1,0 +1,711 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.nft-container {
+    width: 100%;
+    margin: 0;
+    background-color: #1a1a1a;
+    background-image: url('../Images/Cumulative/topbg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.content-columns {
+    width: 90%;
+    max-width: 1800px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nft-container .title-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 300px;
+}
+
+.nft-container .title-row h1 {
+    font-size: 2.5em;
+    margin: 0;
+    margin-right: 200px;
+}
+
+.nft-container .play-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.nft-container .play-icon {
+    width: 32px;
+    height: 32px;
+    margin-right: 5px;
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.nft-container .play-text {
+    font-size: 1.5em;
+    color: #ffffff;
+    transition: font-size 0.3s ease;
+}
+
+.nft-container .play-container:hover .play-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.nft-container .play-container:hover .play-text {
+    font-size: 1.8em;
+}
+
+.nft-container .video-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.nft-container .video-modal-content {
+    position: relative;
+    max-width: 800px;
+    width: 90%;
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1001;
+}
+
+.nft-container .close-modal {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 2em;
+    color: #ffffff;
+    cursor: pointer;
+    z-index: 1002;
+    user-select: none;
+}
+
+.nft-container .video-modal video {
+    width: 100%;
+    height: auto;
+    pointer-events: auto;
+}
+
+.nft-container .subtitle-row {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.nft-container .donate {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.nft-container .donate .donation-label {
+    font-size: 1em !important;
+    color: #a0a0a0;
+    margin-bottom: 10px;
+}
+
+.nft-container .donate .donation-items {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    gap: 20px;
+}
+
+.nft-container .donate .donation-item {
+    text-align: center;
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nft-container .donate .donation-item .icon-container {
+    position: relative;
+    width: 80px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.nft-container .donate .donation-item .donation-icon {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: -10%;
+    left: 60%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.nft-container .donate .donation-item .highlight-container {
+    position: absolute;
+    top: 12.5px;
+    left: 0;
+    width: 90px;
+    height: 60px;
+    border-radius: 5px;
+    padding: 15px 5px 5px 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.nft-container .donate .donation-items .donation-item:nth-child(1) .highlight-container {
+    background: radial-gradient(ellipse at center, #487748, #c9e2c9);
+}
+
+.nft-container .donate .donation-items .donation-item:nth-child(2) .highlight-container {
+    background: radial-gradient(ellipse at center, #f0bc2d, #eccf8c);
+}
+
+.nft-container .donate .donation-items .donation-item:nth-child(3) .highlight-container {
+    background: radial-gradient(ellipse at center, #07559e, #8da6f0);
+}
+
+.nft-container .donate .donation-items .donation-item:nth-child(4) .highlight-container {
+    background: radial-gradient(ellipse at center, #e71010, #d17b7b);
+}
+
+.nft-container .donate .donation-item .value {
+    display: block;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 2px;
+    padding-top: 10px;
+}
+
+.nft-container .donate .donation-item .label {
+    display: block;
+    font-size: 0.7em;
+    color: #ffffff;
+}
+
+.nft-container .pledge {
+    font-size: 0.9em;
+    color: #a0a0a0;
+    margin-top: 10px;
+    padding-top: 20px;
+}
+
+.nft-container .unicef {
+    margin-top: 10px;
+    padding-top: 20px;
+}
+
+.pfp-container {
+    width: 90%;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 20px 0;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+.pfp-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.pfp-header h1 {
+    font-size: 2.5em;
+    margin: 0;
+    margin-left: 50%;
+}
+
+.pfp-header .show-more {
+    color: #a0a0a0;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.pfp-header .show-more:hover {
+    color: #ffffff;
+}
+
+.card-grid-container {
+    display: flex;
+    align-items: stretch;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    flex: 1;
+}
+
+.side-column {
+    width: 50px;
+    height: 700px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.side-column.right-column {
+    background-color: #1a1a1a;
+}
+
+.nav-icon {
+    background-color: #3a3a3a;
+    border: none;
+    color: #ffffff;
+    font-size: 1.2em;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-icon:hover {
+    background-color: #4a4a4a;
+}
+
+.card {
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    width: 300px;
+    height: 300px;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.card img:hover {
+    transform: scale(1.1);
+    z-index: 10;
+    cursor: pointer;
+}
+
+.card-details-container {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 298px;
+    height: 100px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+
+.card-details-top {
+    padding: 5px;
+    border-radius: 5px 5px 0 0;
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-details-middle {
+    padding: 5px;
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2px;
+}
+
+.card-details-bottom {
+    padding: 5px;
+    border-radius: 0 0 5px 5px;
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-left {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+}
+
+.top-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+}
+
+.bottom-left {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: -2px;
+}
+
+.bottom-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2px;
+}
+
+.top-left .title {
+    font-size: 0.7em;
+    color: #ffffff;
+    margin: 0;
+}
+
+.top-right .rarity {
+    font-size: 0.9em;
+    color: #ffffff;
+    margin: 0;
+}
+
+.card-details-middle .owner {
+    font-size: 0.8em;
+    color: #a0a0a0;
+    margin: 0;
+}
+
+.card-details-middle .verify-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.bottom-left .money-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.bottom-left .price {
+    font-size: 0.9em;
+    color: #ffffff;
+    margin: 0;
+}
+
+.bottom-right .love-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.bottom-right .likes {
+    font-size: 0.9em;
+    color: #ffffff;
+    margin: 0;
+}
+
+.featured-creators-container {
+    width: 90%;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 20px 0;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+.featured-header h1{
+    margin-left: 38%;
+}
+
+.creator-list {
+    width: 95%;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.creator-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.creator-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #000000;
+    border-radius: 10px;
+    padding: 10px;
+    width: 45%;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ffffff;
+}
+
+.creator-item .sort-number {
+    font-size: 1.2em;
+    margin-right: 10px;
+    color: #ffffff;
+}
+
+.creator-item .profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.creator-item .creator-name {
+    font-size: 1em;
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+.creator-item .works-count {
+    font-size: 0.9em;
+    color: #a0a0a0;
+    margin-right: 10px;
+}
+
+.creator-item .view-portfolio {
+    font-size: 0.9em;
+    color: #a0a0a0;
+    text-decoration: none;
+    border-radius: 15px;
+    padding: 5px 15px;
+    background-color: #3a3a3a;
+    transition: background-color 0.3s ease;
+}
+
+.creator-item .view-portfolio:hover {
+    background-color: #4a4a4a;
+    color: #ffffff;
+}
+
+.yield-output-container {
+    width: 90%;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 20px 0;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    overflow-y: hidden;
+    position: relative;
+}
+
+.yield-header{
+    margin-left: 38%;
+    position: relative;
+    background-color: #000000;
+    z-index: 10;
+}
+
+.yield-output-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-bottom: 1px solid #ffffff;
+    position: relative;
+    z-index: 10;
+    background-color: #000000;
+}
+
+.yield-output-header span:first-child {
+    text-align: left;
+    flex: 1;
+}
+
+.yield-output-header span:nth-child(2) {
+    text-align: center;
+    flex: 1;
+}
+
+.yield-output-header span:last-child {
+    text-align: right;
+    flex: 1;
+}
+
+.yield-output-rows {
+    height: 400px;
+    overflow-y: hidden;
+    animation: scrollUp 10s linear infinite;
+    position: relative;
+}
+
+.yield-output-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-bottom: 1px solid #333;
+}
+
+.yield-output-row span:first-child {
+    text-align: left;
+    flex: 1;
+}
+
+.yield-output-row span:nth-child(2) {
+    text-align: center;
+    flex: 1;
+}
+
+.yield-output-row span:last-child {
+    text-align: right;
+    flex: 1;
+}
+
+.creator-invite-container {
+    width: 90%;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 20px 0;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.creator-invite-content {
+    text-align: center;
+}
+
+.creator-invite-content h1 {
+    font-size: 2.5em;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.creator-invite-content p {
+    font-size: 1.2em;
+    color: #a0a0a0;
+    margin: 0;
+}
+
+.advantage{
+    height: 600px;
+    width: 100%;
+    background-image: url('../Images/advantage-bg.png');
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.advantage-container {
+    height: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 0px;
+}
+
+.advantage-content {
+    display: flex;
+    flex-direction: column;
+    background-color: #1a1a1f4a;
+    width: 320px;
+    height: 320px;
+    padding: 30px 20px;
+    gap: 80px;
+    margin-top: 20px;
+    border-radius: 20px;
+    box-shadow: inset 0 0 10px #b9b5b5;
+}
+
+.top-advantage {
+    display: flex;
+    flex-direction: row;
+    gap: 30%;
+    margin-left: 0px;
+    width: 100%;
+}
+
+.top-advantage h1 {
+    font-size: 1.5em;
+    margin: 0;
+    color: #237ee6;
+}
+
+.bottom-advantage p{
+    font-size: 1em;
+    color: #ffffff;
+    margin: 0;
+}
+
+.advantage-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 50%;
+}
+
+.advantage-button button {
+    background-color: #1a1a1f4a;
+    color: #ffffff;
+    border: none;
+    border-radius: 25px;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.advantage-button button:hover {
+    background-color: #237ee6;
+    color: #ffffff;
+}
+
+@keyframes scrollUp {
+    0% { transform: translateY(100%); }
+    100% { transform: translateY(-100%); }
+}

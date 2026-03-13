@@ -1,0 +1,257 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0d1117;
+    color: #d1d4dc;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+}
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.main-column {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    background-color: transparent;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.middle-column {
+    flex-grow: 1;
+    background-color: transparent;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+}
+.right-column {
+    width: 250px;
+    background-color: #000000;
+    padding: 10px;
+    box-sizing: border-box;
+}
+h1 {
+    text-align: left;
+    margin: 0 0 10px 0;
+            width: 100%;
+        }
+        .search-box {
+            width: 100%;
+            padding: 5px;
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        .tabs {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .tab {
+            padding: 3px 6px;
+            cursor: pointer;
+            background-color: #2a2a2a;
+            border: 1px solid #333;
+            border-radius: 4px;
+            white-space: nowrap;
+            flex: 1;
+            font-size: 12px;
+            box-sizing: border-box;
+            text-decoration: none;
+            transition: text-decoration 0.3s ease;
+        }
+        .tab.active {
+            background-color: #333;
+            border-color: #666;
+            text-decoration: underline;
+        }
+        .crypto-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 250px;
+        }
+        .crypto-item {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 6px 8px;
+            border-bottom: 1px solid #333;
+            cursor: pointer;
+            gap: 20px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            align-items: center;
+        }
+        .crypto-item:hover {
+            background-color: #1e1e1e;
+        }
+        .symbol {
+            font-weight: bold;
+            flex: 1;
+            text-align: left;
+            max-width: 50%;
+            display: flex;
+            flex-direction: column;
+            font-size: 11px;
+        }
+        .star-icon {
+            cursor: pointer;
+            margin-bottom: 2px;
+            color: #ccc;
+            transition: color 0.3s;
+            font-size: 12px;
+        }
+        .star-icon.favorited {
+            color: #ffd700;
+        }
+        .subtext {
+            font-size: 10px;
+            color: #1e90ff; /* Blue color for Perpetual/Option */
+            margin-top: 2px;
+        }
+        .price-container {
+            flex: 1;
+            text-align: right;
+            max-width: 50%;
+            font-size: 11px;
+        }
+        .price {
+            display: block;
+        }
+        .change-positive {
+            color: #00ff00;
+        }
+        .change-negative {
+            color: #ff0000;
+        }
+        .chart-section {
+            background-color: #0d1117;
+            border: 1px solid #444c56;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+        .time-intervals {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 10px;
+            justify-content: center;
+        }
+        .time-btn {
+            background-color: #22272e;
+            color: #d1d4dc;
+            border: 1px solid #444c56;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 12px;
+            border-radius: 4px;
+        }
+        .time-btn:hover {
+            background-color: #2d333b;
+        }
+        .time-btn.active {
+            background-color: #444c56;
+            color: #d1d4dc;
+        }
+        .chart-tabs {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 10px;
+            justify-content: center;
+        }
+        .chart-tab {
+            background-color: #22272e;
+            color: #d1d4dc;
+            border: 1px solid #444c56;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 12px;
+            border-radius: 4px;
+        }
+        .chart-tab:hover {
+            background-color: #2d333b;
+        }
+        .chart-tab.active {
+            background-color: #444c56;
+            color: #d1d4dc;
+        }
+        .chart-placeholder {
+            height: 500px;
+            background-color: #0d1117;
+            border: 1px solid #444c56;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d1d4dc;
+            font-size: 14px;
+            position: relative;
+        }
+        #chart {
+            width: 100%;
+            height: 100%;
+        }
+        .message-area {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* Order Book Styles */
+        .order-book {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .order-book h2 {
+            font-size: 16px;
+            margin: 0 0 10px 0;
+            text-align: center;
+        }
+        .order-book-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .order-book-table th,
+        .order-book-table td {
+            padding: 5px;
+            text-align: right;
+            font-size: 12px;
+        }
+        .order-book-table th {
+            background-color: #22272e;
+            border: 1px solid #444c56;
+        }
+        .order-book-table td {
+            border-bottom: 1px solid #333;
+        }
+        .buy-row {
+            background-color: rgba(0, 128, 0, 0.2);
+        }
+        .sell-row {
+            background-color: rgba(255, 0, 0, 0.2);
+        }
+        .current-price-row {
+            background-color: #2a2a2a;
+            font-weight: bold;
+            text-align: center;
+        }
+        .order-book-table .price {
+            color: #d1d4dc;
+        }
+        .order-book-table .quantity {
+            color: #d1d4dc;
+        }

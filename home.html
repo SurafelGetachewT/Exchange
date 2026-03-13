@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="CSS/header.css">
+    <link rel="stylesheet" href="CSS/main.css">
+    <link rel="stylesheet" href="CSS/trading-section.css">
+    <link rel="stylesheet" href="CSS/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+<body>
+    <div class="header_container">
+        <div class="left-side">
+            <img src="Images/Header/logo.png" alt="Logo" class="logo_image">
+            <div class="toggle_button_group">
+                <button class="toggle_button active">Trading</button>
+                <button class="toggle_button">NFT</button>
+            </div>
+            <div class="nav_separator"></div>
+            <ul class="nav_items">
+                <li class="dropdown">
+                    Trade <span class="arrow">▼</span>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item">
+                            <div class="dropdown-item-header">
+                                <i class="fas fa-chart-line"></i>
+                                <strong>Options</strong>
+                            </div>
+                            <small>Short cycle, quick return</small>
+                        </li>
+                        <li class="dropdown-item">
+                            <div class="dropdown-item-header">
+                                <i class="fas fa-exchange-alt"></i>
+                                <strong>Spot</strong>
+                            </div>
+                            <small>Multi-category, fast transaction</small>
+                        </li>
+                        <li class="dropdown-item">
+                            <div class="dropdown-item-header">
+                                <i class="fas fa-file-contract"></i>
+                                <strong>Contract</strong>
+                            </div>
+                            <small>USDT Perpetual Contract Forex Futures</small>
+                        </li>
+                        <li class="dropdown-item">
+                            <div class="dropdown-item-header">
+                                <i class="fas fa-gamepad"></i>
+                                <strong>Demo Trading</strong>
+                            </div>
+                            <small>Zero risk, trade digital currency</small>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    Finance <span class="arrow">▼</span>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item">
+                            <div class="dropdown-item-header">
+                                <i class="fas fa-search"></i>
+                                <strong>Browse</strong>
+                            </div>
+                            <small>Zero risk, trade digital currency</small>
+                        </li>
+                        <li class="dropdown-item">
+                            <div class="dropdown-item-header">
+                                <i class="fas fa-wallet"></i>
+                                <strong>Investment Portfolio</strong>
+                            </div>
+                            <small>Combined earnings involving two cryptocurrencies</small>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    Discover <span class="arrow">▼</span>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item">
+                            <div class="dropdown-item-header">
+                                <i class="fas fa-chart-bar"></i>
+                                <strong>Market Trends</strong>
+                            </div>
+                            <small>Network-wide, trading market data</small>
+                        </li>
+                        <li class="dropdown-item">
+                            <div class="dropdown-item-header">
+                                <i class="fas fa-newspaper"></i>
+                                <strong>More News</strong>
+                            </div>
+                            <small>Network-wide, trading market data</small>
+                        </li>
+                        <li class="dropdown-item">
+                            <div class="dropdown-item-header">
+                                <i class="fas fa-fire"></i>
+                                <strong>Trending</strong>
+                            </div>
+                            <small>Help contribute give back</small>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    Event Hall <span class="arrow">▼</span>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item">
+                            <div class="dropdown-item-header">
+                                <i class="fas fa-share"></i>
+                                <strong>Share</strong>
+                            </div>
+                            <small>Invite friends to get reward</small>
+                        </li>
+                        <li class="dropdown-item">
+                            <div class="dropdown-item-header">
+                                <i class="fas fa-trophy"></i>
+                                <strong>Event Hall</strong>
+                            </div>
+                            <small>Rich rewards, everything you expect</small>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="right-side">
+            <i class="fas fa-wallet"></i>
+            <i class="fas fa-user"></i>
+            <div class="nav_separator"></div>
+            <i class="fas fa-headset"></i>
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-globe"></i>
+        </div>
+    </div>
+
+    <!-- Trading Section (Displayed Immediately in a Single Row) -->
+    <div id="trading-section" class="top-info">
+        <img class="logo" src="Images/bitcoin.png" alt="Bitcoin">
+        <span class="pair">BTC/USDT</span>
+        <span class="star-icon" id="favorite-star">★</span>
+        <span class="price">
+            <span class="value" id="price"></span>
+            <span class="usd" id="usd-price"></span>
+        </span>
+        <span class="item">
+            <span class="label">24H Change</span>
+            <span class="value" id="change"></span>
+        </span>
+        <span class="item">
+            <span class="label">24H High</span>
+            <span class="value" id="high"></span>
+        </span>
+        <span class="item">
+            <span class="label">24H Low</span>
+            <span class="value" id="low"></span>
+        </span>
+        <span class="item">
+            <span class="label">24H Volume</span>
+            <span class="value" id="volume"></span>
+        </span>
+        <span class="item">
+            <span class="label">24H Amount</span>
+            <span class="value" id="amount"></span>
+        </span>
+        <span class="time" id="time"></span> <!-- Updated dynamically -->
+    </div>
+
+    <div class="container">
+        <div class="main-column">
+            <h1>Crypto Prices (USD)</h1>
+            <input type="text" class="search-box" id="searchBox" placeholder="Search">
+            <div class="tabs" id="tabContainer">
+                <div class="tab active" data-tab="Optional">Optional</div>
+                <div class="tab" data-tab="Spot">Spot</div>
+                <div class="tab" data-tab="Contract">Contract</div>
+                <div class="tab" data-tab="Options">Options</div>
+            </div>
+            <ul id="cryptoList" class="crypto-list"></ul>
+        </div>
+        <div class="middle-column" id="middle-column">
+            <div class="chart-section">
+                <div class="time-intervals" id="timeIntervals">
+                    <button class="time-btn" data-interval="1m">1m</button>
+                    <button class="time-btn" data-interval="5m">5m</button>
+                    <button class="time-btn" data-interval="15m">15m</button>
+                    <button class="time-btn" data-interval="30m">30m</button>
+                    <button class="time-btn" data-interval="1h">1h</button>
+                    <button class="time-btn" data-interval="4h">4h</button>
+                    <button class="time-btn active" data-interval="1d">1d</button>
+                    <button class="time-btn" data-interval="1w">1w</button>
+                    <button class="time-btn" data-interval="1M">1M</button>
+                </div>
+                <div class="chart-tabs">
+                    <button class="chart-tab active">Basic</button>
+                    <button class="chart-tab">TradingView</button>
+                    <button class="chart-tab">Depth Map</button>
+                </div>
+                <div class="chart-placeholder">
+                    <div id="chart"></div>
+                </div>
+            </div>
+            <div class="message-area" id="middle-message" style="display:flex;gap:16px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;">
+                <div id="trade-panel" style="flex:1;min-width:320px;"></div>
+                <div id="orders-panel" style="flex:1;min-width:320px;"></div>
+            </div>
+        </div>
+        <div class="right-column" id="right-column">
+            <div class="order-book">
+                <h2>Order Book</h2>
+                <table class="order-book-table" id="orderBookTable">
+                    <thead>
+                        <tr>
+                            <th>Price (USD)</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orderBookBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+<footer class="footer">
+        <div class="header-section">
+            <img src="Images/Header/logo.png" alt="Logo" class="logo">
+            <div class="language-selector">
+                <button class="language-btn">English ▼</button>
+                <div class="language-dropdown">
+                    <div class="language-option"><img src="https://flagcdn.com/w20/es.png" alt="Spanish Flag"> Spanish</div>
+            <div class="language-option"><img src="https://flagcdn.com/w20/fr.png" alt="French Flag"> French</div>
+                    <div class="language-option"><img src="https://flagcdn.com/w20/de.png" alt="German Flag"> German</div>
+                    <div class="language-option"><img src="https://flagcdn.com/w20/jp.png" alt="Japanese Flag"> Japanese</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Trading Market</h4>
+                <ul>
+                    <li><a href="#">Spot</a></li>
+                    <li><a href="#">Forex</a></li>
+                    <li><a href="#">Perpetual</a></li>
+                    <li><a href="#">Options</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Asset</h4>
+                <ul>
+                    <li><a href="#">My Assets</a></li>
+                    <li><a href="#">Deposit</a></li>
+                    <li><a href="#">Withdraw</a></li>
+                    <li><a href="#">Transfer</a></li>
+                    <li><a href="#">Order center</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#">Invite Rewards</a></li>
+                    <li><a href="#">Finance</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Online Service</a></li>
+                    <li><a href="#">Learn</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Policy</h4>
+                <ul>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">AML Agreement</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            All rights reserved 2024 &copy; bitFlyer<br>
+            A full-service virtual currency company committed to sincerity, reliability, and putting our customers first.<br>
+            Consulting services: bit@gmail.com
+        </div>
+    </footer>
+
+    <script src="Script/api.js"></script>
+    <script src="Script/header.js"></script>
+    <script src="Script/index.js"></script>
+    <script src="Script/onclick.js"></script>
+</body>
+</html>

@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFT</title>
+    <link rel="stylesheet" href="CSS/header.css">
+    <link rel="stylesheet" href="CSS/main.css">
+    <link rel="stylesheet" href="CSS/trading-section.css">
+    <link rel="stylesheet" href="CSS/nft.css">
+    <link rel="stylesheet" href="CSS/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <div class="header_container">
+        <div class="left-side">
+            <img src="Images/Header/logo.png" alt="Logo" class="logo_image">
+            <div class="toggle_button_group">
+                <button class="toggle_button active">Trading</button>
+                <button class="toggle_button">NFT</button>
+            </div>
+            <div class="nav_separator"></div>
+            <ul class="nav_items">
+                <li class="dropdown">
+                    Trade <span class="arrow">▼</span>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item">
+                            <div class="dropdown-item-header">
+                                <i class="fas fa-chart-line"></i>
+                                <strong>Options</strong>
+                            </div>
+                            <small>Short cycle, quick return</small>
+                        </li>
+                        <li class="dropdown-item">
+                            <div class="dropdown-item-header">
+                                <i class="fas fa-exchange-alt"></i>
+                                <strong>Spot</strong>
+                            </div>
+                            <small>Multi-category, fast transaction</small>
+                        </li>
+                        <li class="dropdown-item">
+                            <div class="dropdown-item-header">
+                                <i class="fas fa-file-contract"></i>
+                                <strong>Contract</strong>
+                            </div>
+                            <small>USDT Perpetual Contract Forex Futures</small>
+                        </li>
+                        <li class="dropdown-item">
+                            <div class="dropdown-item-header">
+                                <i class="fas fa-gamepad"></i>
+                                <strong>Demo Trading</strong>
+                            </div>
+                            <small>Zero risk, trade digital currency</small>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    Finance <span class="arrow">▼</span>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item">
+                            <div class="dropdown-item-header">
+                                <i class="fas fa-search"></i>
+                                <strong>Browse</strong>
+                            </div>
+                            <small>Zero risk, trade digital currency</small>
+                        </li>
+                        <li class="dropdown-item">
+                            <div class="dropdown-item-header">
+                                <i class="fas fa-wallet"></i>
+                                <strong>Investment Portfolio</strong>
+                            </div>
+                            <small>Combined earnings involving two cryptocurrencies</small>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    Discover <span class="arrow">▼</span>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item">
+                            <div class="dropdown-item-header">
+                                <i class="fas fa-chart-bar"></i>
+                                <strong>Market Trends</strong>
+                            </div>
+                            <small>Network-wide, trading market data</small>
+                        </li>
+                        <li class="dropdown-item">
+                            <div class="dropdown-item-header">
+                                <i class="fas fa-newspaper"></i>
+                                <strong>More News</strong>
+                            </div>
+                            <small>Network-wide, trading market data</small>
+                        </li>
+                        <li class="dropdown-item">
+                            <div class="dropdown-item-header">
+                                <i class="fas fa-fire"></i>
+                                <strong>Trending</strong>
+                            </div>
+                            <small>Help contribute give back</small>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    Event Hall <span class="arrow">▼</span>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item">
+                            <div class="dropdown-item-header">
+                                <i class="fas fa-share"></i>
+                                <strong>Share</strong>
+                            </div>
+                            <small>Invite friends to get reward</small>
+                        </li>
+                        <li class="dropdown-item">
+                            <div class="dropdown-item-header">
+                                <i class="fas fa-trophy"></i>
+                                <strong>Event Hall</strong>
+                            </div>
+                            <small>Rich rewards, everything you expect</small>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="right-side">
+            <a href="login.html">Login</a>
+            <a href="signup.html">Sign Up</a>
+            <div class="nav_separator"></div>
+            <i class="fas fa-headset"></i>
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-globe"></i>
+        </div>
+    </div>
+    <div id="trading-section" class="top-info">
+        <img class="logo" src="Images/bitcoin.png" alt="Bitcoin">
+        <span class="pair">BTC/USDT</span>
+        <span class="star-icon" id="favorite-star">★</span>
+        <span class="price">
+            <span class="value" id="price"></span>
+            <span class="usd" id="usd-price"></span>
+        </span>
+        <span class="item">
+            <span class="label">24H Change</span>
+            <span class="value" id="change"></span>
+        </span>
+        <span class="item">
+            <span class="label">24H High</span>
+            <span class="value" id="high"></span>
+        </span>
+        <span class="item">
+            <span class="label">24H Low</span>
+            <span class="value" id="low"></span>
+        </span>
+        <span class="item">
+            <span class="label">24H Volume</span>
+            <span class="value" id="volume"></span>
+        </span>
+        <span class="item">
+            <span class="label">24H Amount</span>
+            <span class="value" id="amount"></span>
+        </span>
+        <span class="time" id="time"></span>
+    </div>
+    <div class="nft-container">
+        <div class="content-columns">
+            <div class="content-column">
+                <div class="title-row">
+                    <h1>Buy NFT Artwork</h1>
+                    <div class="play-container" id="playButton">
+                        <img src="Images/Cumulative/play.svg" alt="Play Icon" class="play-icon">
+                        <span class="play-text">Play</span>
+                    </div>
+                </div>
+                <div class="subtitle-row">
+                    <h2>Help Children Around the World</h2>
+                </div>
+                <div class="donate">
+                    <span class="donation-label">Cumulative donation</span>
+                    <div class="donation-items">
+                        <div class="donation-item">
+                            <div class="icon-container">
+                                <img src="Images/Cumulative/1.png" alt="Trading Volume" class="donation-icon">
+                                <div class="highlight-container">
+                                    <span class="value">5,728</span>
+                                    <span class="label">Trading Volume(Orders)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="donation-item">
+                            <div class="icon-container">
+                                <img src="Images/Cumulative/2.png" alt="Transaction Amount" class="donation-icon">
+                                <div class="highlight-container">
+                                    <span class="value">4,336,386</span>
+                                    <span class="label">Transaction Amount (USDT)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="donation-item">
+                            <div class="icon-container">
+                                <img src="Images/Cumulative/4.png" alt="Sold NFTs" class="donation-icon">
+                                <div class="highlight-container">
+                                    <span class="value">7,879</span>
+                                    <span class="label">Sold NFTs</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="donation-item">
+                            <div class="icon-container">
+                                <img src="Images/Cumulative/3.png" alt="Beneficiaries Icon" class="donation-icon">
+                                <div class="highlight-container">
+                                    <span class="value">1,036,378</span>
+                                    <span class="label">Beneficiaries</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pledge">
+                    We pledge to donate 30% of all NFT sales proceeds to UNICEF to support children in need.
+                </div>
+                <div class="unicef">
+                    <img src="Images/Cumulative/unicef.svg" alt="UNICEF Logo" class="unicef-logo">
+                </div>
+            </div>
+        </div>
+        <div class="video-modal" id="videoModal" style="display: none;">
+            <div class="video-modal-content">
+                <span class="close-modal" id="closeModal" role="button" aria-label="Close video modal">&times;</span>
+                <video id="modalVideo" width="100%">
+                    <source src="Videos/bitFlyer.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+    <div class="pfp-container" data-category="pfp">
+        <header class="pfp-header">
+            <h1>PFP</h1>
+            <a href="#" class="show-more">Show more</a>
+        </header>
+        <div class="card-grid-container">
+            <div class="side-column left-column">
+                <button class="nav-icon back"><i class="fas fa-chevron-left"></i></button>
+            </div>
+            <div class="card-grid">
+                <div class="card" data-index="1">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="PFP 1">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="2">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="PFP 2">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="3">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="PFP 3">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="4">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="PFP 4">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="5">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="PFP 5">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="6">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="PFP 6">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="7">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="PFP 7">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="8">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="PFP 8">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="side-column right-column">
+                <button class="nav-icon forth"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="pfp-container" data-category="gaming" style="display: none;">
+        <header class="pfp-header">
+            <h1>Gaming</h1>
+            <a href="#" class="show-more">Show more</a>
+        </header>
+        <div class="card-grid-container">
+            <div class="side-column left-column">
+                <button class="nav-icon back"><i class="fas fa-chevron-left"></i></button>
+            </div>
+            <div class="card-grid">
+                <div class="card" data-index="1">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="Gaming 1">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="2">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="Gaming 2">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="3">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="Gaming 3">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="4">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="Gaming 4">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="5">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="Gaming 5">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="6">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="Gaming 6">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="7">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="Gaming 7">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="8">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="Gaming 8">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="side-column right-column">
+                <button class="nav-icon forth"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="pfp-container" data-category="art" style="display: none;">
+        <header class="pfp-header">
+            <h1>Art</h1>
+            <a href="#" class="show-more">Show more</a>
+        </header>
+        <div class="card-grid-container">
+            <div class="side-column left-column">
+                <button class="nav-icon back"><i class="fas fa-chevron-left"></i></button>
+            </div>
+            <div class="card-grid">
+                <div class="card" data-index="1">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="Art 1">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="2">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="Art 2">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="3">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="Art 3">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="4">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="Art 4">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="5">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="Art 5">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="6">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="Art 6">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="7">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="Art 7">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="8">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="Art 8">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="side-column right-column">
+                <button class="nav-icon forth"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="pfp-container" data-category="hot-collection" style="display: none;">
+        <header class="pfp-header">
+            <h1>Hot Collection</h1>
+            <a href="#" class="show-more">Show more</a>
+        </header>
+        <div class="card-grid-container">
+            <div class="side-column left-column">
+                <button class="nav-icon back"><i class="fas fa-chevron-left"></i></button>
+            </div>
+            <div class="card-grid">
+                <div class="card" data-index="1">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="Hot Collection 1">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="2">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="Hot Collection 2">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="3">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="Hot Collection 3">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="4">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="Hot Collection 4">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="5">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="Hot Collection 5">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="6">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="Hot Collection 6">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="7">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="Hot Collection 7">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian Baker #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-index="8">
+                    <img src="Images/Cumulative/Card/pfp1.png" alt="Hot Collection 8">
+                    <div class="card-details-container">
+                        <div class="card-details-top">
+                            <div class="top-left">
+                                <span class="title">Christian #3880</span>
+                            </div>
+                            <div class="top-right">
+                                <span class="rarity">SSR</span>
+                            </div>
+                        </div>
+                        <div class="card-details-middle">
+                            <span class="owner">Azurki</span>
+                            <img src="Images/Cumulative/Card/verify-icon.svg" alt="Verify Icon" class="verify-icon">
+                        </div>
+                        <div class="card-details-bottom">
+                            <div class="bottom-left">
+                                <img src="Images/Cumulative/Card/money-icon.svg" alt="Money Icon" class="money-icon">
+                                <span class="price">27334.1</span>
+                            </div>
+                            <div class="bottom-right">
+                                <img src="Images/Cumulative/Card/love-icon.svg" alt="Love Icon" class="love-icon">
+                                <span class="likes">3.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="side-column right-column">
+                <button class="nav-icon forth"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="featured-creators-container">
+        <header class="featured-header">
+            <h1>Featured Creators: Top10</h1>
+        </header>
+        <div class="creator-list">
+            <div class="creator-row">
+                <div class="creator-item">
+                    <span class="sort-number">1.</span>
+                    <img src="Images/Cumulative/Card/profile.gif" alt="Profile" class="profile-image">
+                    <span class="creator-name">ApeReunion</span>
+                    <span class="works-count">3677 Works</span>
+                    <a href="#" class="view-portfolio">View Portfolio</a>
+                </div>
+                <div class="creator-item">
+                    <span class="sort-number">2.</span>
+                    <img src="Images/Cumulative/Card/profile.gif" alt="Profile" class="profile-image">
+                    <span class="creator-name">ApeReunion</span>
+                    <span class="works-count">3677 Works</span>
+                    <a href="#" class="view-portfolio">View Portfolio</a>
+                </div>
+            </div>
+            <div class="creator-row">
+                <div class="creator-item">
+                    <span class="sort-number">3.</span>
+                    <img src="Images/Cumulative/Card/profile.gif" alt="Profile" class="profile-image">
+                    <span class="creator-name">ApeReunion</span>
+                    <span class="works-count">3677 Works</span>
+                    <a href="#" class="view-portfolio">View Portfolio</a>
+                </div>
+                <div class="creator-item">
+                    <span class="sort-number">4.</span>
+                    <img src="Images/Cumulative/Card/profile.gif" alt="Profile" class="profile-image">
+                    <span class="creator-name">ApeReunion</span>
+                    <span class="works-count">3677 Works</span>
+                    <a href="#" class="view-portfolio">View Portfolio</a>
+                </div>
+            </div>
+            <div class="creator-row">
+                <div class="creator-item">
+                    <span class="sort-number">5.</span>
+                    <img src="Images/Cumulative/Card/profile.gif" alt="Profile" class="profile-image">
+                    <span class="creator-name">ApeReunion</span>
+                    <span class="works-count">3677 Works</span>
+                    <a href="#" class="view-portfolio">View Portfolio</a>
+                </div>
+                <div class="creator-item">
+                    <span class="sort-number">6.</span>
+                    <img src="Images/Cumulative/Card/profile.gif" alt="Profile" class="profile-image">
+                    <span class="creator-name">ApeReunion</span>
+                    <span class="works-count">3677 Works</span>
+                    <a href="#" class="view-portfolio">View Portfolio</a>
+                </div>
+            </div>
+            <div class="creator-row">
+                <div class="creator-item">
+                    <span class="sort-number">7.</span>
+                    <img src="Images/Cumulative/Card/profile.gif" alt="Profile" class="profile-image">
+                    <span class="creator-name">ApeReunion</span>
+                    <span class="works-count">3677 Works</span>
+                    <a href="#" class="view-portfolio">View Portfolio</a>
+                </div>
+                <div class="creator-item">
+                    <span class="sort-number">8.</span>
+                    <img src="Images/Cumulative/Card/profile.gif" alt="Profile" class="profile-image">
+                    <span class="creator-name">ApeReunion</span>
+                    <span class="works-count">3677 Works</span>
+                    <a href="#" class="view-portfolio">View Portfolio</a>
+                </div>
+            </div>
+            <div class="creator-row">
+                <div class="creator-item">
+                    <span class="sort-number">9.</span>
+                    <img src="Images/Cumulative/Card/profile.gif" alt="Profile" class="profile-image">
+                    <span class="creator-name">ApeReunion</span>
+                    <span class="works-count">3677 Works</span>
+                    <a href="#" class="view-portfolio">View Portfolio</a>
+                </div>
+                <div class="creator-item">
+                    <span class="sort-number">10.</span>
+                    <img src="Images/Cumulative/Card/profile.gif" alt="Profile" class="profile-image">
+                    <span class="creator-name">ApeReunion</span>
+                    <span class="works-count">3677 Works</span>
+                    <a href="#" class="view-portfolio">View Portfolio</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="yield-output-container">
+        <header class="yield-header">
+            <h1>Yield Output</h1>
+        </header>
+        <div class="yield-output-header">
+            <span>User Address</span>
+            <span>NFT Name</span>
+            <span>Revenue</span>
+        </div>
+        <div class="yield-output-rows">
+            <div class="yield-output-row">
+                <span>0x35ce58b...5cdbfed</span>
+                <span>#4215</span>
+                <span>2967.64<i class="icon-unit-t"></i></span>
+            </div>
+            <div class="yield-output-row">
+                <span>0xa57fd6...b543bff</span>
+                <span>#2797</span>
+                <span>8100.73<i class="icon-unit-t"></i></span>
+            </div>
+            <div class="yield-output-row">
+                <span>0x74d1ba...3ebde5d</span>
+                <span>#7498</span>
+                <span>7395.48<i class="icon-unit-t"></i></span>
+            </div>
+            <div class="yield-output-row">
+                <span>0xe590b5...fc301e</span>
+                <span>#5144</span>
+                <span>6468.52<i class="icon-unit-t"></i></span>
+            </div>
+            <div class="yield-output-row">
+                <span>0x20741e...07dcd24</span>
+                <span>#2360</span>
+                <span>5089.39<i class="icon-unit-t"></i></span>
+            </div>
+            <div class="yield-output-row">
+                <span>0xab1128...b2d5b6</span>
+                <span>#19342</span>
+                <span>2010.5<i class="icon-unit-t"></i></span>
+            </div>
+            <div class="yield-output-row">
+                <span>0x123456...789abc</span>
+                <span>#1234</span>
+                <span>4500.12<i class="icon-unit-t"></i></span>
+            </div>
+            <div class="yield-output-row">
+                <span>0xabcdef...123456</span>
+                <span>#5678</span>
+                <span>3200.89<i class="icon-unit-t"></i></span>
+            </div>
+            <div class="yield-output-row">
+                <span>0x987654...321cba</span>
+                <span>#9012</span>
+                <span>6789.34<i class="icon-unit-t"></i></span>
+            </div>
+            <div class="yield-output-row">
+                <span>0x456789...abc123</span>
+                <span>#3456</span>
+                <span>8901.67<i class="icon-unit-t"></i></span>
+            </div>
+        </div>
+    </div>
+    <div class="creator-invite-container">
+        <div class="creator-invite-content">
+            <h1>Become a BitFlyer NFT Certified Creator</h1>
+            <p>We welcome talented creators like you who use your art to inspire hope and create lasting value.</p>
+        </div>
+    </div>
+    <div class="advantage">
+        <div class="advantage-container">
+            <div class="advantage-content">
+                <div class="top-advantage">
+                    <h1>Unique Logo</h1>
+                    <img src="Images/advantage1.svg" alt="Unique Logo">
+                </div>
+                <div class="bottom-advantage">
+                    <p>Certified NFT bitFlyer Creator recieve an exclusive certification badge, permanently linked to
+                        their account and displayed alongside their works </p>
+                </div>
+            </div>
+            <div class="advantage-content">
+                <div class="top-advantage">
+                    <h1>Traffic Exposure</h1>
+                    <img src="Images/advantage2.svg" alt="Traffic Exposure">
+                </div>
+                <div class="bottom-advantage">
+                    <p>Certified NFT bitFlyer Creators gain access to exclusive promotional opportunities, increasing
+                        their visibility and reach within the platform.</p>
+                </div>
+                <div class="bottom-advantage"></div>
+            </div>
+            <div class="advantage-content">
+                <div class="top-advantage">
+                    <h1>Operation Customization</h1>
+                    <img src="Images/advantage3.svg" alt="Operation Customization">
+                </div>
+                <div class="bottom-advantage">
+                    <p>Certified NFT bitFlyer Creators can customize their operational settings, tailoring their
+                        experience to better suit their needs and preferences.</p>
+                </div>
+            </div>
+            <div class="advantage-content">
+                <div class="top-advantage">
+                    <h1>Exclusive Customer Support</h1>
+                    <img src="Images/advantage4.svg" alt="Exclusive Customer Support">
+                </div>
+                <div class="bottom-advantage">
+                    <p>Certified NFT bitFlyer Creators receive dedicated support from our team, ensuring they have the
+                        resources and assistance they need to succeed.</p>
+                </div>
+            </div>
+        </div>
+        <div class="advantage-button">
+            <button>Apply Now</button>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="header-section">
+            <img src="Images/Header/logo.png" alt="Logo" class="logo">
+            <div class="language-selector">
+                <button class="language-btn">English ▼</button>
+                <div class="language-dropdown">
+                    <div class="language-option"><img src="https://flagcdn.com/w20/es.png" alt="Spanish Flag"> Spanish</div>
+            <div class="language-option"><img src="https://flagcdn.com/w20/fr.png" alt="French Flag"> French</div>
+                    <div class="language-option"><img src="https://flagcdn.com/w20/de.png" alt="German Flag"> German</div>
+                    <div class="language-option"><img src="https://flagcdn.com/w20/jp.png" alt="Japanese Flag"> Japanese</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Trading Market</h4>
+                <ul>
+                    <li><a href="#">Spot</a></li>
+                    <li><a href="#">Forex</a></li>
+                    <li><a href="#">Perpetual</a></li>
+                    <li><a href="#">Options</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Asset</h4>
+                <ul>
+                    <li><a href="#">My Assets</a></li>
+                    <li><a href="#">Deposit</a></li>
+                    <li><a href="#">Withdraw</a></li>
+                    <li><a href="#">Transfer</a></li>
+                    <li><a href="#">Order center</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#">Invite Rewards</a></li>
+                    <li><a href="#">Finance</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Online Service</a></li>
+                    <li><a href="#">Learn</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Policy</h4>
+                <ul>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">AML Agreement</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            All rights reserved 2024 bitFlyer<br>
+            A full-service virtual currency company committed to sincerity, reliability, and putting our customers first.<br>
+            Consulting services: bit@gmail.com
+        </div>
+    </footer>
+    <script src="Script/api.js"></script>
+    <script src="Script/header.js"></script>
+    <script src="Script/trading-section.js"></script>
+    <script src="Script/index.js"></script>
+    <script src="Script/onclick.js"></script>
+    <script src="Script/video.js"></script>
+    <script src="Script/count.js"></script>
+    <script src="Script/backandforth.js"></script>
+</body>
+
+</html>

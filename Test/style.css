@@ -1,0 +1,146 @@
+:root {
+    --bg-primary: #0d1117;
+    --bg-secondary: #21262d;
+    --text-primary: #f0f6fc;
+    --accent-green: #238636;
+    --accent-red: #da3633;
+    --border-color: #30363d;
+    --input-bg: #161b22;
+    --input-border: #30363d;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.dashboard {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-nav {
+    background: var(--bg-secondary);
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#symbol-selector {
+    background: var(--input-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--input-border);
+    padding: 5px;
+}
+
+#current-price {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.trading-panels {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    flex: 1;
+    overflow: hidden;
+}
+
+.order-book-panel, .trading-panel {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.chart-panel {
+    position: relative;
+    background: var(--bg-secondary);
+}
+
+#chart-container {
+    width: 100%;
+    height: 100%;
+}
+
+.trading-panel form {
+    display: flex;
+    flex-direction: column;
+}
+
+.trading-panel label {
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+.trading-panel input, .trading-panel select {
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    color: var(--text-primary);
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.trading-panel button {
+    margin-top: 15px;
+    padding: 10px;
+    background: var(--accent-green);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.trading-panel button:hover {
+    background: #2ea043;
+}
+
+#order-history {
+    margin-top: 20px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.order-item {
+    padding: 5px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.8em;
+}
+
+/* Order Book Styles */
+#order-book-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.asks-section, .bids-section {
+    flex: 1;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 0;
+    font-size: 0.8em;
+}
+
+.ask-row {
+    color: var(--accent-red);
+    background: rgba(218, 54, 51, 0.1);
+}
+
+.bid-row {
+    color: var(--accent-green);
+    background: rgba(35, 134, 54, 0.1);
+}
+
+@media (max-width: 1024px) {
+    .trading-panels {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+}

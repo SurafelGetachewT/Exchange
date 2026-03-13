@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Prices</title>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0d1117;
+            color: #d1d4dc;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+        }
+        .main-column {
+            display: flex;
+            flex-direction: column;
+            width: 250px;
+            background-color: transparent;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .middle-column {
+            flex-grow: 1;
+            background-color: transparent;
+            padding: 10px;
+            box-sizing: border-box;
+            margin: 0 10px;
+            display: flex;
+            flex-direction: column;
+        }
+        .right-column {
+            width: 250px;
+            background-color: #000000;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        h1 {
+            text-align: left;
+            margin: 0 0 10px 0;
+            width: 100%;
+        }
+        .search-box {
+            width: 100%;
+            padding: 5px;
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        .tabs {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .tab {
+            padding: 3px 6px;
+            cursor: pointer;
+            background-color: #2a2a2a;
+            border: 1px solid #333;
+            border-radius: 4px;
+            white-space: nowrap;
+            flex: 1;
+            font-size: 12px;
+            box-sizing: border-box;
+            text-decoration: none;
+            transition: text-decoration 0.3s ease;
+        }
+        .tab.active {
+            background-color: #333;
+            border-color: #666;
+            text-decoration: underline;
+        }
+        .crypto-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 250px;
+        }
+        .crypto-item {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 6px 8px;
+            border-bottom: 1px solid #333;
+            cursor: pointer;
+            gap: 20px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            align-items: center;
+        }
+        .crypto-item:hover {
+            background-color: #1e1e1e;
+        }
+        .symbol {
+            font-weight: bold;
+            flex: 1;
+            text-align: left;
+            max-width: 50%;
+            display: flex;
+            flex-direction: column;
+            font-size: 11px;
+        }
+        .star-icon {
+            cursor: pointer;
+            margin-bottom: 2px;
+            color: #ccc;
+            transition: color 0.3s;
+            font-size: 12px;
+        }
+        .star-icon.favorited {
+            color: #ffd700;
+        }
+        .subtext {
+            font-size: 10px;
+            color: #1e90ff; /* Blue color for Perpetual/Option */
+            margin-top: 2px;
+        }
+        .price-container {
+            flex: 1;
+            text-align: right;
+            max-width: 50%;
+            font-size: 11px;
+        }
+        .price {
+            display: block;
+        }
+        .change-positive {
+            color: #00ff00;
+        }
+        .change-negative {
+            color: #ff0000;
+        }
+        .chart-section {
+            background-color: #0d1117;
+            border: 1px solid #444c56;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+        .time-intervals {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 10px;
+            justify-content: center;
+        }
+        .time-btn {
+            background-color: #22272e;
+            color: #d1d4dc;
+            border: 1px solid #444c56;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 12px;
+            border-radius: 4px;
+        }
+        .time-btn:hover {
+            background-color: #2d333b;
+        }
+        .time-btn.active {
+            background-color: #444c56;
+            color: #d1d4dc;
+        }
+        .chart-tabs {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 10px;
+            justify-content: center;
+        }
+        .chart-tab {
+            background-color: #22272e;
+            color: #d1d4dc;
+            border: 1px solid #444c56;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 12px;
+            border-radius: 4px;
+        }
+        .chart-tab:hover {
+            background-color: #2d333b;
+        }
+        .chart-tab.active {
+            background-color: #444c56;
+            color: #d1d4dc;
+        }
+        .chart-placeholder {
+            height: 500px;
+            background-color: #0d1117;
+            border: 1px solid #444c56;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d1d4dc;
+            font-size: 14px;
+            position: relative;
+        }
+        #chart {
+            width: 100%;
+            height: 100%;
+        }
+        .message-area {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* Order Book Styles */
+        .order-book {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .order-book h2 {
+            font-size: 16px;
+            margin: 0 0 10px 0;
+            text-align: center;
+        }
+        .order-book-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .order-book-table th,
+        .order-book-table td {
+            padding: 5px;
+            text-align: right;
+            font-size: 12px;
+        }
+        .order-book-table th {
+            background-color: #22272e;
+            border: 1px solid #444c56;
+        }
+        .order-book-table td {
+            border-bottom: 1px solid #333;
+        }
+        .buy-row {
+            background-color: rgba(0, 128, 0, 0.2);
+        }
+        .sell-row {
+            background-color: rgba(255, 0, 0, 0.2);
+        }
+        .current-price-row {
+            background-color: #2a2a2a;
+            font-weight: bold;
+            text-align: center;
+        }
+        .order-book-table .price {
+            color: #d1d4dc;
+        }
+        .order-book-table .quantity {
+            color: #d1d4dc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-column">
+            <h1>Crypto Prices (USD)</h1>
+            <input type="text" class="search-box" id="searchBox" placeholder="Search">
+            <div class="tabs" id="tabContainer">
+                <div class="tab active" data-tab="Optional">Optional</div>
+                <div class="tab" data-tab="Spot">Spot</div>
+                <div class="tab" data-tab="Contract">Contract</div>
+                <div class="tab" data-tab="Options">Options</div>
+            </div>
+            <ul id="cryptoList" class="crypto-list"></ul>
+        </div>
+        <div class="middle-column" id="middle-column">
+            <div class="chart-section">
+                <div class="time-intervals" id="timeIntervals">
+                    <button class="time-btn" data-interval="1m">1m</button>
+                    <button class="time-btn" data-interval="5m">5m</button>
+                    <button class="time-btn" data-interval="15m">15m</button>
+                    <button class="time-btn" data-interval="30m">30m</button>
+                    <button class="time-btn" data-interval="1h">1h</button>
+                    <button class="time-btn" data-interval="4h">4h</button>
+                    <button class="time-btn active" data-interval="1d">1d</button>
+                    <button class="time-btn" data-interval="1w">1w</button>
+                    <button class="time-btn" data-interval="1M">1M</button>
+                </div>
+                <div class="chart-tabs">
+                    <button class="chart-tab active">Basic</button>
+                    <button class="chart-tab">TradingView</button>
+                    <button class="chart-tab">Depth Map</button>
+                </div>
+                <div class="chart-placeholder">
+                    <div id="chart"></div>
+                </div>
+            </div>
+            <div class="message-area" id="middle-message"></div>
+        </div>
+        <div class="right-column" id="right-column">
+            <div class="order-book">
+                <h2>Order Book</h2>
+                <table class="order-book-table" id="orderBookTable">
+                    <thead>
+                        <tr>
+                            <th>Price (USD)</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orderBookBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let chart;
+        let currentInterval = '1d';
+        let currentCoinId = 'bitcoin';
+        let currentSymbol = 'BTCUSDT';
+        let currentTab = 'Optional';
+        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        let allCoins = [];
+        const apiUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin,ethereum,cosmos-hub,cardano,bitcoin-cash,ripple,litecoin,usd-coin,dogecoin,filecoin,dai,tron,polkadot,chainlink,avalanche-2,near,aptos,optimism,arbitrum,stellar&order=market_cap_desc&per_page=250&page=1&sparkline=false&price_change_percentage=24h';
+        const rightColumn = document.getElementById('right-column');
+        const middleMessage = document.getElementById('middle-message');
+        const tabContainer = document.getElementById('tabContainer');
+        const timeIntervals = document.getElementById('timeIntervals');
+        const orderBookBody = document.getElementById('orderBookBody');
+        const searchBox = document.getElementById('searchBox');
+
+        // Cache for OHLC and order book data to reduce API calls
+        const ohlcCache = new Map();
+        const orderBookCache = new Map();
+
+        async function fetchCryptoData() {
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) throw new Error('API request failed');
+                const data = await response.json();
+                allCoins = data;
+                renderCryptoList(data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                document.getElementById('cryptoList').innerHTML = '<li>Error loading data. Please try again later.</li>';
+            }
+        }
+
+        async function fetchOHLCData(symbol = 'BTCUSDT', interval = '1d', limit = 1000) {
+            const cacheKey = `${symbol}-${interval}`;
+            if (ohlcCache.has(cacheKey)) {
+                return ohlcCache.get(cacheKey);
+            }
+
+            try {
+                const res = await fetch(`https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=${limit}`);
+                if (!res.ok) {
+                    if (res.status === 429) console.warn('Rate limit exceeded, using cached data if available');
+                    throw new Error('Binance API request failed');
+                }
+                const data = await res.json();
+                const candles = data.map(d => ({
+                    x: new Date(d[0]),
+                    y: [parseFloat(d[1]), parseFloat(d[2]), parseFloat(d[3]), parseFloat(d[4])]
+                }));
+                ohlcCache.set(cacheKey, candles);
+                return candles;
+            } catch (error) {
+                console.error('Error fetching OHLC data:', error);
+                return ohlcCache.get(cacheKey) || [];
+            }
+        }
+
+        async function fetchOrderBook(symbol = 'BTCUSDT') {
+            const cacheKey = `${symbol}-orderbook`;
+            if (orderBookCache.has(cacheKey)) {
+                return orderBookCache.get(cacheKey);
+            }
+
+            try {
+                const res = await fetch(`https://api.binance.com/api/v3/depth?symbol=${symbol}&limit=10`);
+                if (!res.ok) {
+                    if (res.status === 429) console.warn('Rate limit exceeded for order book, using cached data if available');
+                    throw new Error('Binance order book API request failed');
+                }
+                const data = await res.json();
+                orderBookCache.set(cacheKey, data);
+                return data;
+            } catch (error) {
+                console.error('Error fetching order book data:', error);
+                return orderBookCache.get(cacheKey) || { bids: [], asks: [] };
+            }
+        }
+
+        async function fetchCurrentPrice(symbol = 'BTCUSDT') {
+            try {
+                const res = await fetch(`https://api.binance.com/api/v3/ticker/price?symbol=${symbol}`);
+                if (!res.ok) throw new Error('Binance price API request failed');
+                const data = await res.json();
+                return parseFloat(data.price);
+            } catch (error) {
+                console.error('Error fetching current price:', error);
+                return 0;
+            }
+        }
+
+        async function renderOrderBook(symbol, currentPrice) {
+            const orderBook = await fetchOrderBook(symbol);
+            const bids = orderBook.bids.slice(0, 10); // Top 10 bids
+            const asks = orderBook.asks.slice(0, 10); // Top 10 asks
+            orderBookBody.innerHTML = '';
+
+            // Render buy orders (bids) first (highest price at the top)
+            bids.forEach(([price, quantity]) => {
+                const row = document.createElement('tr');
+                row.classList.add('buy-row');
+                row.innerHTML = `
+                    <td class="price">${parseFloat(price).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                    <td class="quantity">${parseFloat(quantity).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                `;
+                orderBookBody.appendChild(row);
+            });
+
+            // Render current price
+            const currentPriceRow = document.createElement('tr');
+            currentPriceRow.classList.add('current-price-row');
+            currentPriceRow.innerHTML = `
+                <td colspan="2">Current Price: $${currentPrice.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+            `;
+            orderBookBody.appendChild(currentPriceRow);
+
+            // Render sell orders (asks) last (lowest price at the top, so no reverse)
+            asks.forEach(([price, quantity]) => {
+                const row = document.createElement('tr');
+                row.classList.add('sell-row');
+                row.innerHTML = `
+                    <td class="price">${parseFloat(price).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                    <td class="quantity">${parseFloat(quantity).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                `;
+                orderBookBody.appendChild(row);
+            });
+        }
+
+        async function renderChart(symbol, interval) {
+            const candles = await fetchOHLCData(symbol, interval, 1000);
+            const options = {
+                chart: {
+                    type: 'candlestick',
+                    height: '100%',
+                    background: '#0d1117',
+                    foreColor: '#d1d4dc',
+                    toolbar: { show: true },
+                    zoom: { enabled: true },
+                    pan: { enabled: true, mode: 'x' },
+                    animations: { enabled: false }
+                },
+                series: [{ data: candles.slice(-200) }],
+                xaxis: { type: 'datetime' },
+                yaxis: { tooltip: { enabled: true } },
+                grid: { show: true, borderColor: '#444c56', strokeDashArray: 0 },
+                noData: { text: 'Loading...', align: 'center', verticalAlign: 'middle', style: { color: '#d1d4dc' } }
+            };
+
+            if (chart) {
+                chart.updateOptions(options);
+            } else {
+                chart = new ApexCharts(document.querySelector("#chart"), options);
+                chart.render();
+            }
+        }
+
+        function renderCryptoList(coins) {
+            const list = document.getElementById('cryptoList');
+            list.innerHTML = '';
+            let filteredCoins = coins;
+            if (currentTab === 'Optional') {
+                filteredCoins = coins.filter(coin => favorites.includes(coin.id));
+            } else if (currentTab === 'Spot' || currentTab === 'Contract' || currentTab === 'Options') {
+                filteredCoins = coins; // Show all coins for Spot, Contract, and Options
+            } else {
+                list.innerHTML = '<li>No data available for this tab.</li>';
+                return;
+            }
+            const searchText = searchBox.value.toLowerCase();
+            filteredCoins = filteredCoins.filter(coin => coin.symbol.toLowerCase().includes(searchText));
+            filteredCoins.forEach(coin => {
+                const item = document.createElement('li');
+                item.classList.add('crypto-item');
+                item.dataset.coinId = coin.id;
+                
+                const symbol = document.createElement('span');
+                symbol.classList.add('symbol');
+                
+                const star = document.createElement('span');
+                star.classList.add('star-icon');
+                star.innerHTML = '★';
+                if (favorites.includes(coin.id)) {
+                    star.classList.add('favorited');
+                }
+                star.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    toggleFavorite(coin.id, star);
+                });
+                
+                const symbolText = document.createElement('span');
+                symbolText.textContent = `${coin.symbol.toUpperCase()}/USD`;
+                
+                symbol.appendChild(star);
+                symbol.appendChild(symbolText);
+                
+                // Add subtext for Contract and Options tabs
+                if (currentTab === 'Contract') {
+                    const subtext = document.createElement('span');
+                    subtext.classList.add('subtext');
+                    subtext.textContent = 'Perpetual';
+                    symbol.appendChild(subtext);
+                } else if (currentTab === 'Options') {
+                    const subtext = document.createElement('span');
+                    subtext.classList.add('subtext');
+                    subtext.textContent = 'Options';
+                    symbol.appendChild(subtext);
+                }
+                
+                const priceContainer = document.createElement('div');
+                priceContainer.classList.add('price-container');
+                
+                const price = document.createElement('span');
+                price.classList.add('price');
+                price.textContent = `$${coin.current_price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                
+                const change = document.createElement('span');
+                const changeValue = coin.price_change_percentage_24h ? coin.price_change_percentage_24h.toFixed(2) : '0.00';
+                change.textContent = `${changeValue}%`;
+                if (parseFloat(changeValue) > 0) {
+                    change.classList.add('change-positive');
+                } else if (parseFloat(changeValue) < 0) {
+                    change.classList.add('change-negative');
+                }
+                
+                priceContainer.appendChild(price);
+                priceContainer.appendChild(document.createElement('br'));
+                priceContainer.appendChild(change);
+                
+                item.appendChild(symbol);
+                item.appendChild(priceContainer);
+                item.addEventListener('click', () => handleClick(`${coin.symbol.toUpperCase()}/USD`, coin.id));
+                list.appendChild(item);
+            });
+        }
+
+        function toggleFavorite(coinId, star) {
+            const index = favorites.indexOf(coinId);
+            if (index > -1) {
+                favorites.splice(index, 1);
+                star.classList.remove('favorited');
+            } else {
+                favorites.push(coinId);
+                star.classList.add('favorited');
+            }
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            renderCryptoList(allCoins);
+        }
+
+        async function handleClick(selectedCoin, coinId) {
+            const binanceSymbol = coinId === 'bitcoin' ? 'BTCUSDT' :
+                                coinId === 'ethereum' ? 'ETHUSDT' :
+                                coinId === 'cosmos-hub' ? 'ATOMUSDT' :
+                                coinId === 'cardano' ? 'ADAUSDT' :
+                                coinId === 'bitcoin-cash' ? 'BCHUSDT' :
+                                coinId === 'ripple' ? 'XRPUSDT' :
+                                coinId === 'litecoin' ? 'LTCUSDT' :
+                                coinId === 'usd-coin' ? 'USDCUSDT' :
+                                coinId === 'dogecoin' ? 'DOGEUSDT' :
+                                coinId === 'filecoin' ? 'FILUSDT' :
+                                coinId === 'dai' ? 'DAIUSDT' :
+                                coinId === 'tron' ? 'TRXUSDT' :
+                                coinId === 'polkadot' ? 'DOTUSDT' :
+                                coinId === 'chainlink' ? 'LINKUSDT' :
+                                coinId === 'avalanche-2' ? 'AVAXUSDT' :
+                                coinId === 'near' ? 'NEARUSDT' :
+                                coinId === 'aptos' ? 'APTUSDT' :
+                                coinId === 'optimism' ? 'OPUSDT' :
+                                coinId === 'arbitrum' ? 'ARBUSDT' :
+                                coinId === 'stellar' ? 'XLMUSDT' : null;
+
+            if (binanceSymbol) {
+                currentCoinId = coinId;
+                currentSymbol = binanceSymbol;
+                await renderChart(binanceSymbol, currentInterval);
+                const currentPrice = await fetchCurrentPrice(binanceSymbol);
+                await renderOrderBook(binanceSymbol, currentPrice);
+            } else {
+                console.error('Binance symbol not mapped for this coin');
+                orderBookBody.innerHTML = '<tr><td colspan="2">Order book not available</td></tr>';
+            }
+        }
+
+        timeIntervals.addEventListener('click', (event) => {
+            if (event.target.classList.contains('time-btn')) {
+                timeIntervals.querySelectorAll('.time-btn').forEach(btn => btn.classList.remove('active'));
+                event.target.classList.add('active');
+                currentInterval = event.target.dataset.interval;
+                handleClick('BTC/USD', currentCoinId);
+            }
+        });
+
+        tabContainer.addEventListener('click', (event) => {
+            const tab = event.target.closest('.tab');
+            if (tab && tab.parentElement === tabContainer) {
+                tabContainer.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                currentTab = tab.dataset.tab;
+                renderCryptoList(allCoins);
+            }
+        });
+
+        searchBox.addEventListener('input', () => {
+            renderCryptoList(allCoins);
+        });
+
+        fetchCryptoData();
+        renderChart('BTCUSDT', '1d');
+        fetchCurrentPrice('BTCUSDT').then(price => renderOrderBook('BTCUSDT', price));
+
+        setInterval(fetchCryptoData, 60000);
+        setInterval(() => fetchCurrentPrice(currentSymbol).then(price => renderOrderBook(currentSymbol, price)), 10000);
+    </script>
+</body>
+</html>
